@@ -13,7 +13,7 @@ namespace ClassInventory
     public partial class Form1 : Form
     {
         // Global Variabales go here
-
+        List<Player> players = new List<Player>();
 
         public Form1()
         {
@@ -22,12 +22,34 @@ namespace ClassInventory
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            string name, position, team;
+            int age;
+            // Get Info
+            age = Convert.ToInt32(ageInput.Text);
+            name = nameInput.Text;
+            position = positionInput.Text;
+            team = teamInput.Text;
 
+            // Create Player Using Values
+            Player newPlayer = new Player(age, name, team, position);
+
+            // Add to List
+            players.Add(newPlayer);
+
+            // Update Text
+            ShowText();
         }
 
         private void removeButton_Click(object sender, EventArgs e)
         {
+            // Get Input Text Input
+            string removeName = removeInput.Text;
 
+            Player removePlayer = players.Find(x => x.name == removeName);
+
+            // DEBUG
+            outputLabel.Text = removePlayer.name;
+            //ShowText();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -41,6 +63,15 @@ namespace ClassInventory
         private void showButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowText()
+        {
+            outputLabel.Text = "";
+            foreach(Player player in players)
+            {
+                outputLabel.Text += $"Name: {player.name}, Age: {player.age}, Team: {player.team}, Position: {player.position}\n";
+            }
         }
     }
 }

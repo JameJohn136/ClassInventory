@@ -45,24 +45,55 @@ namespace ClassInventory
             // Get Input Text Input
             string removeName = removeInput.Text;
 
-            Player removePlayer = players.Find(x => x.name == removeName);
+           
+           Player removePlayer = players.Find(x => x.name == removeName);
 
-            // DEBUG
-            outputLabel.Text = removePlayer.name;
-            //ShowText();
+            // Check to see if player was found
+            if (removePlayer != null)
+            {
+               removeErrorText.Text = $"Removed {removePlayer.name}";
+               players.Remove(removePlayer);
+               ShowText();
+            } else
+            {
+                removeErrorText.Text = "Player Not Found";
+            }
+
+            
+            
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            // This is to be completed in Part II. You will use 
-            // Lambda Expressions. 
-            //---------------------------
+
+            // Get Input Text Input
+            string searchName = nameSearchInput.Text;
+            // Find Player
+            Player searchPlayer = players.Find(x => x.name == searchName);
+
+            // Display found player(s)
+            outputLabel.Text = "";
+            foreach(Player player in players)
+            {
+                if (player.name == searchName)
+                {
+                    outputLabel.Text += $"Name: {player.name}, Age: {player.age}, Team: {player.team}, Position: {player.position}\n";
+                }
+            }
+
+            // See if any player was found (DOESNT WORK PLEASE FIX JAMES)
+            //if (outputLabel.Text == "") ;
+            //{
+            //    outputLabel.Text = "No Player Found";
+            //}
 
         }
 
         private void showButton_Click(object sender, EventArgs e)
         {
-
+            // Update Text
+            ShowText();
         }
 
         private void ShowText()

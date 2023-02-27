@@ -50,6 +50,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.nameSearchInput = new System.Windows.Forms.TextBox();
             this.nameLabel3 = new System.Windows.Forms.Label();
+            this.removeErrorText = new System.Windows.Forms.Label();
             this.addBox.SuspendLayout();
             this.removeBox.SuspendLayout();
             this.displayBox.SuspendLayout();
@@ -180,6 +181,7 @@
             // 
             // removeBox
             // 
+            this.removeBox.Controls.Add(this.removeErrorText);
             this.removeBox.Controls.Add(this.removeButton);
             this.removeBox.Controls.Add(this.removeInput);
             this.removeBox.Controls.Add(this.nameLabel2);
@@ -297,6 +299,13 @@
             this.nameLabel3.TabIndex = 0;
             this.nameLabel3.Text = "Name";
             // 
+            // removeErrorText
+            // 
+            this.removeErrorText.Location = new System.Drawing.Point(5, 71);
+            this.removeErrorText.Name = "removeErrorText";
+            this.removeErrorText.Size = new System.Drawing.Size(147, 73);
+            this.removeErrorText.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +353,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox nameSearchInput;
         private System.Windows.Forms.Label nameLabel3;
+        private System.Windows.Forms.Label removeErrorText;
     }
 }
 

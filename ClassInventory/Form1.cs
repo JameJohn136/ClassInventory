@@ -83,17 +83,24 @@ namespace ClassInventory
             }
 
             // See if any player was found (DOESNT WORK PLEASE FIX JAMES)
-            //if (outputLabel.Text == "") ;
-            //{
-            //    outputLabel.Text = "No Player Found";
-            //}
+            if (outputLabel.Text == "") 
+            {
+                outputLabel.Text = "No Player Found";
+            }
 
         }
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            // Update Text
-            ShowText();
+            // Sort by Teams
+            List<Player> teamSortList = players.OrderBy(x => x.team).ToList();
+
+            // Print Text
+            outputLabel.Text = "";
+            foreach(Player player in teamSortList)
+            {
+                outputLabel.Text += $"Name: {player.name}, Age: {player.age}, Team: {player.team}, Position: {player.position}\n";
+            }
         }
 
         private void ShowText()
